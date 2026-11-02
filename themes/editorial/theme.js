@@ -1,5 +1,6 @@
 // Thème "editorial" : une colonne, typographie éditoriale (Lora + Inter + JetBrains Mono),
-// dates en marge. Pensé pour les CV tech / produit, dense mais aéré, sur 1 ou 2 pages.
+// titres de section en marge, dates alignées à droite du titre de chaque item.
+// Pensé pour les CV tech / produit, dense mais aéré, sur 1 ou 2 pages.
 
 export const fonts = [
   { pkg: 'lora', family: 'Lora', weights: [400, 600] },
@@ -12,38 +13,44 @@ export function render(cv, { esc, paragraphs, period, label }) {
   const show = cv.variant.show ?? {};
   const c = cv.contact;
 
-  const row = (aside, body) => `<div class="row"><div class="when">${aside}</div><div class="what">${body}</div></div>`;
+  // Un item : marge de gauche (accueille le titre de section sur le premier item),
+  // puis ligne de tête (titre + date alignée à droite) et contenu.
+  const ASIDE = '<div class="aside"></div>';
+  const row = (when, title, rest = '') =>
+    `<div class="row">${ASIDE}<div class="main">${title || when ? `<div class="head">${title}${when ? `<div class="when">${when}</div>` : ''}</div>` : ''}${rest}</div></div>`;
+  const h3 = (title, org) => `<h3>${esc(title)}${org ? ` <span class="org">${esc(org)}</span>` : ''}</h3>`;
   const list = (items) => (items?.length ? `<ul>${items.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>` : '');
   const stack = (items) => (show.stack !== false && items?.length ? `<div class="stack">${items.map((s) => `<span>${esc(s)}</span>`).join('')}</div>` : '');
 
   const sections = {
-    bio: () => row('', `<div class="bio">${paragraphs(cv.bio)}</div>`),
+    bio: () => row('', '', `<div class="bio">${paragraphs(cv.bio)}</div>`),
     experiences: () =>
       cv.experiences.map((e) =>
         row(
           esc(period(e, cv.lang)),
-          `<h3>${esc(e.role)}${e.org ? ` <span class="org">${esc(e.org)}</span>` : ''}</h3>
-           ${e.summary ? `<p class="summary">${esc(e.summary)}</p>` : ''}
+          h3(e.role, e.org),
+          `${e.summary ? `<p class="summary">${esc(e.summary)}</p>` : ''}
            ${show.highlights === false ? '' : list(e.highlights)}
            ${stack(e.stack)}`,
         ),
       ).join(''),
     projects: () =>
-      cv.projects.map((p) => row(esc(p.year ?? ''), `<h3>${esc(p.title)}${p.org ? ` <span class="org">${esc(p.org)}</span>` : ''}</h3>${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ''}${list(p.highlights)}${stack(p.stack)}`)).join(''),
+      cv.projects.map((p) => row(esc(p.year ?? ''), h3(p.title, p.org), `${p.summary ? `<p class="summary">${esc(p.summary)}</p>` : ''}${list(p.highlights)}${stack(p.stack)}`)).join(''),
     education: () =>
-      cv.education.map((e) => row(esc(period(e, cv.lang)), `<h3>${esc(e.degree)} <span class="org">${esc(e.org)}</span></h3>${e.summary ? `<p class="summary">${esc(e.summary)}</p>` : ''}`)).join(''),
+      cv.education.map((e) => row(esc(period(e, cv.lang)), h3(e.degree, e.org), `${e.summary ? `<p class="summary">${esc(e.summary)}</p>` : ''}`)).join(''),
     skills: () =>
-      `<div class="grid">${cv.skills.map((s) => `<div><div class="k">${esc(s.label)}</div><div class="v">${s.items.map(esc).join(', ')}</div></div>`).join('')}</div>`,
-    talks: () => cv.talks.map((t) => row(esc(t.year), `<h3>${esc(t.title)} <span class="org">${esc(t.kind)}</span></h3><p class="summary">${esc(t.subtitle)}</p>`)).join(''),
+      row('', '', `<div class="grid">${cv.skills.map((s) => `<div><div class="k">${esc(s.label)}</div><div class="v">${s.items.map(esc).join(', ')}</div></div>`).join('')}</div>`),
+    talks: () => cv.talks.map((t) => row(esc(t.year), h3(t.title, t.kind), t.subtitle ? `<p class="summary">${esc(t.subtitle)}</p>` : '')).join(''),
     languages: () =>
-      `<div class="grid">${cv.languages.map((l) => `<div><div class="k">${esc(l.name)}</div><div class="v">${esc(l.level)}</div></div>`).join('')}</div>`,
-    interests: () => row('', `<p class="summary">${cv.interests.map(esc).join(' · ')}</p>`),
+      row('', '', `<div class="grid">${cv.languages.map((l) => `<div><div class="k">${esc(l.name)}</div><div class="v">${esc(l.level)}</div></div>`).join('')}</div>`),
+    interests: () => row('', '', `<p class="summary">${cv.interests.map(esc).join(' · ')}</p>`),
   };
 
   const body = cv.order
     .filter((k) => sections[k] && k !== 'contact')
     .filter((k) => !Array.isArray(cv[k]) || cv[k].length)
-    .map((k) => `<section class="s-${k}"><h2>${L(k)}</h2>${sections[k]()}</section>`)
+    // Le titre va dans la marge du premier item : il reste sur la même ligne et la même page que lui.
+    .map((k) => `<section class="s-${k}">${sections[k]().replace(ASIDE, `<div class="aside"><h2>${L(k)}</h2></div>`)}</section>`)
     .join('');
 
   const contacts = [

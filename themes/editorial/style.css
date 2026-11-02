@@ -28,7 +28,7 @@
 
   /* Espacement vertical entre deux items (expériences, formations…) */
   --row-space: 3.8mm;
-  --section-space: 4.5mm;
+  --section-space: 4.5mm;           /* espace au-dessus ET au-dessous du trait de section */
   --row-break: avoid;               /* auto = un item peut être coupé entre deux pages */
 
   /* Traits : titres de section / séparation entre items */
@@ -37,7 +37,7 @@
   --row-rule: #efece6;              /* entre deux items d'une même section : plus discret */
   --row-rule-width: 0.2mm;
   --base: 8.6pt;
-  --gutter: 30mm;
+  --gutter: 34mm;                   /* marge de gauche : titres de section */
   --page-margin: 13mm 17mm 12mm;
 }
 
@@ -113,42 +113,62 @@ h1 {
   color: var(--muted);
 }
 
-/* ---------- Sections ---------- */
-section { margin-top: var(--section-space); }
+/* ---------- Sections ----------
+   Titre de section dans la marge de gauche, sur la même ligne que le premier item.
+   Il est rendu dans la marge du premier item : titre, trait et premier item restent sur la même page. */
+section { margin: 0; }
 h2 {
-  margin: 0 0 1mm;
-  padding-top: 2mm;
-  border-top: var(--section-rule-width) solid var(--section-rule);
+  margin: 0;
+  padding-right: 4mm;
   font-family: var(--h2-font);
   font-size: var(--h2-size);
   font-weight: var(--h2-weight);
   letter-spacing: var(--h2-tracking);
+  line-height: 1.2;
   text-transform: var(--h2-case);
   color: var(--h2-color);
-  break-after: avoid;
 }
 
 .row {
   display: grid;
-  grid-template-columns: var(--gutter) 1fr;
-  padding: var(--row-space) 0;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  align-items: baseline;          /* titre de section aligné sur la première ligne de l'item */
+  padding-bottom: var(--row-space);
   break-inside: var(--row-break);
   orphans: 2;
   widows: 2;
 }
-.row + .row { border-top: var(--row-rule-width) solid var(--row-rule); }
-h2 + .row { padding-top: 0.6mm; }
+.row:first-child {
+  padding-top: var(--section-space);
+  border-top: var(--section-rule-width) solid var(--section-rule);
+  break-inside: avoid;            /* le trait et le titre ne restent jamais seuls en bas de page */
+}
+.row:has(.grid) { break-inside: auto; }  /* grilles de compétences : peuvent être coupées… */
+.grid > div { break-inside: avoid; }     /* …mais jamais au milieu d'un groupe */
+.row + .row > .main {
+  padding-top: var(--row-space);
+  border-top: var(--row-rule-width) solid var(--row-rule);
+}
+/* Trait de section : même espace au-dessus (fin de la section précédente) et au-dessous. */
+.row:last-child { padding-bottom: var(--section-space); }
 section:last-of-type .row:last-child { padding-bottom: 0; } /* évite une page blanche pour quelques mm de marge */
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 4mm;
+  margin-bottom: 0.6mm;
+  break-after: avoid;
+}
 .when {
-  padding-top: 0.6mm;
-  padding-right: 4mm;
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
   font-family: var(--mono);
   font-size: 7.2pt;
   color: var(--muted);
 }
 h3 {
-  break-after: avoid;
-  margin: 0 0 0.6mm;
+  margin: 0;
   font-family: var(--display);
   font-size: var(--h3-size);
   font-weight: var(--h3-weight);
@@ -185,7 +205,5 @@ li::before { content: '›'; position: absolute; left: 0.6mm; top: -0.2mm; color
   display: grid;
   grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
   gap: 2mm 6mm;
-  margin-left: var(--gutter);
-  padding-top: 1mm;
 }
 .grid .k { font-weight: 600; color: var(--ink); }

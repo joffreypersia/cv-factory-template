@@ -81,7 +81,7 @@ La règle principale donnée à l'IA : **ne rien inventer**. Ce qui n'est pas da
 
 ## Thèmes
 
-- **editorial** : une colonne, typographie éditoriale, dates en marge, stack en étiquettes. Dense et lisible, adapté aux CV tech / produit.
+- **editorial** : titres de section dans la marge de gauche, dates alignées à droite de chaque poste, stack en étiquettes. Dense et lisible, adapté aux CV tech / produit.
 - **sidebar** : colonne latérale (bio, conférences, contact), photo ronde, titres espacés.
 
 Chaque variante peut ajuster un thème sans le modifier, via `style:` (variables CSS) et `fonts:` (paquets `@fontsource/*`, inlinés dans le HTML et le PDF). Pour un nouveau thème, copiez `themes/editorial/` en gardant la signature `export function render(cv, helpers)`.

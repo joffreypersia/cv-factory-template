@@ -32,8 +32,7 @@ style:
   h3-weight: 600
   h3-tracking: -0.01em
   bio-size: 9.6pt
-  section-rule: var(--ink)
   section-rule-width: 1px
   row-space: 3mm
   row-break: auto
-  section-space: 3mm
+  section-space: 4mm
