@@ -1,0 +1,39 @@
+# Tout le contenu, sans filtre. Sert de "CV source" lisible (export/CV-complet-FR.md)
+# et de réservoir à donner à un LLM pour générer une nouvelle variante.
+title: CV complet
+lang: fr
+theme: editorial
+output: CV-complet-FR
+
+page_margin: 10mm 12mm 9mm
+
+sections: [bio, experiences, projects, skills, talks, education, languages, interests]
+
+# Typo : Aleo (titres) + Fira Code (mono).
+# Graisses statiques (@fontsource) plutôt que variables : Chrome les embarque proprement
+# dans le PDF (TrueType) au lieu de les convertir en Type3.
+fonts:
+  - { pkg: aleo, family: Aleo, weights: [400, 600] }
+  - { pkg: fira-code, family: Fira Code, weights: [400, 500] }
+
+style:
+  display: "'Aleo', Georgia, serif"
+  mono: "'Fira Code', ui-monospace, monospace"
+  h1-size: 36pt
+  h1-weight: 600
+  h1-tracking: -0.025em
+  h2-font: "'Aleo', Georgia, serif"
+  h2-size: 12.5pt
+  h2-weight: 600
+  h2-tracking: -0.015em
+  h2-case: none
+  h2-color: var(--ink)
+  h3-size: 10.5pt
+  h3-weight: 600
+  h3-tracking: -0.01em
+  bio-size: 9.6pt
+  section-rule: var(--ink)
+  section-rule-width: 1px
+  row-space: 3mm
+  row-break: auto
+  section-space: 3mm

@@ -1,0 +1,26 @@
+# CV ciblé « lead développeuse » : mêmes faits que le CV complet, relus sous l'angle lead.
+extends: complet
+title: Lead développeuse
+output: CV-Camille-Martin-Lead
+
+angles: [lead]          # bio, titres et formulations de l'angle "lead" (voir data/)
+
+sections: [bio, experiences, skills, talks, education]
+
+experiences:
+  ids: [atelier-numerique, freelance, agence-pixel, ecole-code]
+  max_highlights: 3
+skills:
+  ids: [backend, frontend, devops, pedagogy]
+talks:
+  ids: [meetup-php]
+education:
+  ids: [master-info]
+
+# Retouche ponctuelle, propre à cette candidature uniquement.
+overrides:
+  ecole-code:
+    highlights: []
+
+show:
+  stack: true

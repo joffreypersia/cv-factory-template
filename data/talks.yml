@@ -1,0 +1,19 @@
+# Conférences, interviews, publications. Contenu FICTIF fourni en exemple.
+
+- id: meetup-php
+  title: Meetup PHP Lyon
+  year: 2023
+  kind: { fr: Conférence, en: Talk }
+  subtitle:
+    fr: "« Migrer un monolithe sans tout casser »"
+    en: "“Migrating a monolith without breaking everything”"
+  tags: [dev, speaking]
+
+- id: podcast-reconversion
+  title: Podcast Exemple
+  year: 2022
+  kind: { fr: Interview, en: Interview }
+  subtitle:
+    fr: "« Apprendre à coder à 35 ans »"
+    en: "“Learning to code at 35”"
+  tags: [teaching, speaking]

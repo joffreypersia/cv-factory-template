@@ -1,0 +1,107 @@
+# Toutes les expériences, sans filtre. C'est la "source riche" : on met TOUT ici,
+# les variantes (variants/*.yml) choisissent quoi afficher.
+#
+# Champs :
+#   id          identifiant stable (utilisé par les variantes)
+#   role        intitulé du poste
+#   org         structure (optionnel)
+#   location    (optionnel)
+#   start / end AAAA ou AAAA-MM ; end: present pour "en cours"
+#   summary     une phrase ou un court paragraphe
+#   highlights  réalisations concrètes, chiffrées si possible
+#   stack       technologies / outils
+#   tags        thématiques pour filtrer (libres) : dev, lead, teaching, freelance…
+#   angles      formulations alternatives des MÊMES faits, par angle (voir AGENTS.md) :
+#                 lead      architecture, encadrement d'équipe
+#                 teaching  pédagogie, formation d'adultes
+#               Chaque angle ne redéfinit que les champs utiles (summary, highlights, stack…).
+#
+# "TODO" = information à confirmer ou compléter.
+# Contenu FICTIF fourni en exemple : remplacez-le par vos propres expériences.
+
+- id: atelier-numerique
+  role: { fr: Lead développeuse, en: Lead developer }
+  org: Atelier Numérique
+  location: Lyon
+  start: 2022-03
+  end: present
+  summary:
+    fr: "Lead d'une équipe de cinq développeurs sur une plateforme de réservation utilisée par 200 salles de sport."
+    en: "Leading a team of five developers on a booking platform used by 200 gyms."
+  highlights:
+    - fr: "Migration progressive d'un monolithe PHP vers Laravel, sans interruption de service."
+      en: "Gradual migration of a PHP monolith to Laravel, with no service interruption."
+    - fr: "Mise en place de la revue de code systématique et d'une CI qui exécute les tests à chaque merge request."
+      en: "Introduced systematic code review and a CI running the test suite on every merge request."
+    - fr: "Temps de chargement des pages de réservation divisé par trois."
+      en: "Booking page load time cut by a factor of three."
+  stack: [Laravel, PHP, Vue.js, PostgreSQL, Docker, GitLab CI]
+  tags: [dev, lead]
+  angles:
+    lead:
+      highlights:
+        - fr: "Encadrement de cinq développeurs : revue de code, binômage, entretiens de progression."
+        - fr: "Choix d'architecture et migration progressive d'un monolithe PHP vers Laravel, sans interruption de service."
+        - fr: "Mise en place de la CI et des conventions d'équipe (tests, revues, documentation)."
+    teaching:
+      summary:
+        fr: "Lead développeuse : j'accompagne au quotidien la montée en compétence de cinq développeurs, dont deux alternants."
+      highlights:
+        - fr: "Binômage et revues de code pensées comme des moments d'apprentissage."
+        - fr: "Rédaction d'une documentation d'accueil qui réduit l'intégration d'un nouvel arrivant à une semaine."
+
+- id: freelance
+  role: { fr: Développeuse freelance, en: Freelance developer }
+  start: 2020
+  end: present
+  summary:
+    fr: "Missions courtes pour des PME et des associations : sites vitrine, outils internes, automatisations."
+    en: "Short missions for small businesses and non-profits: showcase websites, internal tools, automations."
+  highlights:
+    - fr: "Une trentaine de missions, principalement sur recommandation."
+      en: "Around thirty missions, mostly through referrals."
+    - fr: "Automatisation de la facturation d'une association avec n8n."
+      en: "Automated invoicing for a non-profit with n8n."
+  stack: [Laravel, WordPress, n8n, Tailwind CSS]
+  tags: [dev, freelance]
+
+- id: ecole-code
+  role: { fr: Formatrice, en: Trainer }
+  org: École du Code
+  start: 2020-09
+  end: present
+  summary:
+    fr: "Formatrice en développement web pour des adultes en reconversion, en présentiel et à distance."
+    en: "Web development trainer for adults changing careers, on-site and remote."
+  highlights:
+    - fr: "Environ 80 heures de cours par an : PHP, Laravel, Git, bases de données."
+      en: "Around 80 hours of teaching per year: PHP, Laravel, Git, databases."
+    - fr: "Suivi des projets de fin de formation."
+      en: "Supervision of end-of-course projects."
+  stack: [PHP, Laravel, Git, MySQL]
+  tags: [teaching]
+  angles:
+    teaching:
+      summary:
+        fr: "Conception et animation de modules de développement web pour des adultes en reconversion, en présentiel et à distance."
+      highlights:
+        - fr: "Environ 80 heures de cours par an : PHP, Laravel, Git, bases de données."
+        - fr: "Pédagogie par projet : chaque apprenant livre une application complète en fin de parcours."
+        - fr: "Suivi individuel et évaluation des projets de fin de formation."
+
+- id: agence-pixel
+  role: { fr: Développeuse web, en: Web developer }
+  org: Agence Pixel
+  location: Lyon
+  start: 2016-09
+  end: 2020-08
+  summary:
+    fr: "Développement de sites et d'applications web pour les clients d'une agence de communication."
+    en: "Building websites and web applications for the clients of a communication agency."
+  highlights:
+    - fr: "Une quarantaine de projets livrés, du site vitrine à l'extranet client."
+      en: "Around forty projects delivered, from showcase sites to client extranets."
+    - fr: "Création du thème WordPress de base réutilisé sur tous les projets de l'agence."
+      en: "Built the base WordPress theme reused across all of the agency's projects."
+  stack: [WordPress, PHP, JavaScript, Sass]
+  tags: [dev]

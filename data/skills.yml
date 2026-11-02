@@ -1,0 +1,26 @@
+# Compétences groupées. Une variante choisit les groupes par id ou par tags.
+# level (optionnel) : 1 à 5, utilisé seulement par les thèmes qui l'affichent.
+
+- id: backend
+  label: { fr: Back-end, en: Back-end }
+  tags: [dev]
+  items: [Laravel, PHP, PostgreSQL, MySQL, { fr: API REST, en: REST APIs }]
+
+- id: frontend
+  label: { fr: Front-end, en: Front-end }
+  tags: [dev]
+  items: [Vue.js, JavaScript, Tailwind CSS, WordPress]
+
+- id: devops
+  label: { fr: Outils & DevOps, en: Tooling & DevOps }
+  tags: [dev]
+  items: [Git, Docker, GitLab CI, n8n]
+
+- id: pedagogy
+  label: { fr: Pédagogie, en: Teaching }
+  tags: [teaching]
+  items: [{ fr: Conception de modules, en: Course design }, { fr: Pédagogie par projet, en: Project-based learning }, { fr: Classes à distance, en: Remote classes }, { fr: Évaluation, en: Assessment }]
+  angles:
+    lead:
+      label: { fr: Encadrement, en: Leadership }
+      items: [{ fr: Revue de code, en: Code review }, { fr: Mentorat, en: Mentoring }, { fr: Onboarding, en: Onboarding }]

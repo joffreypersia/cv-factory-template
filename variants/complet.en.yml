@@ -1,0 +1,5 @@
+# Version anglaise du CV complet : même contenu et même design, textes en anglais.
+extends: complet
+title: Full CV (EN)
+lang: en
+output: CV-complete-EN

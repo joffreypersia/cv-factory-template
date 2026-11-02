@@ -1,0 +1,6 @@
+# Version publique du CV complet : identique, sans le numéro de téléphone.
+# À publier sur un site ou à partager par lien.
+extends: complet
+title: CV complet (public)
+output: CV-complet-FR-public
+hide_contact: [phone]

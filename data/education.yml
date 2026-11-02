@@ -1,0 +1,17 @@
+# Diplômes et certifications. Contenu FICTIF fourni en exemple.
+
+- id: master-info
+  degree: { fr: Master informatique, en: Master's degree in computer science }
+  org: Université Exemple
+  start: 2014-09
+  end: 2016-06
+  summary:
+    fr: Spécialité génie logiciel, stage de fin d'études en agence web.
+    en: Software engineering track, final internship in a web agency.
+  tags: [dev]
+
+- id: titre-formateur
+  degree: { fr: Titre professionnel Formateur professionnel d'adultes, en: Adult trainer professional certificate }
+  org: Organisme Exemple
+  end: 2021 # TODO année exacte
+  tags: [teaching]

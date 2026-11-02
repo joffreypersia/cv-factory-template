@@ -1,0 +1,13 @@
+# Projets marquants (clients, produits, open source…). Même format que les expériences,
+# avec title et year à la place de role et start/end. Contenu FICTIF fourni en exemple.
+
+- id: resa-open
+  title: resa-open
+  org: { fr: Projet open source, en: Open-source project }
+  year: 2024
+  url: https://github.com/
+  summary:
+    fr: "Composant Vue.js de prise de rendez-vous, accessible et sans dépendance."
+    en: "Accessible, dependency-free Vue.js appointment booking component."
+  stack: [Vue.js, TypeScript]
+  tags: [dev]

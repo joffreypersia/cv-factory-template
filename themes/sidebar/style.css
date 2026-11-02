@@ -1,0 +1,165 @@
+/* Thème sidebar — variables surchargeables depuis une variante via `style:` */
+:root {
+  --side-width: 76mm;
+  --side-bg: #f7f7f5;
+  --rule: #d9d9d6;
+  --ink: #1c1c1c;
+  --text: #6b6b6b;
+  --muted: #8f8f8f;
+  --accent: #1c1c1c;
+  --font: 'Montserrat', system-ui, sans-serif;
+  --base: 8.4pt;
+}
+
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: var(--base);
+  line-height: 1.55;
+  color: var(--text);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+p { margin: 0 0 0.8em; }
+
+/* ---------- Structure ---------- */
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--side-width) 1fr;
+  width: 210mm;
+  min-height: 297mm;
+}
+.side-bg {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--side-width);
+  background: var(--side-bg);
+  border-right: 0.3mm solid var(--rule);
+}
+@media print {
+  /* Répété sur chaque page si le CV fait plus d'une page */
+  .side-bg { position: fixed; height: 297mm; }
+}
+@media screen {
+  body { background: #e4e4e1; padding: 32px 0; }
+  .sheet { margin: 0 auto; background: #fff; box-shadow: 0 6px 30px rgb(0 0 0 / 0.12); }
+}
+
+/* ---------- Colonne latérale ---------- */
+aside {
+  position: relative;
+  padding: 13mm 9mm 0;
+  text-align: center;
+}
+.photo {
+  display: block;
+  width: 44mm;
+  height: 44mm;
+  margin: 0 auto 7mm;
+  border-radius: 50%;
+  object-fit: cover;
+}
+h1 {
+  margin: 0;
+  font-size: 17pt;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.headline {
+  margin: 2.5mm 0 0;
+  font-size: 7pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--text);
+}
+.side-section { margin-top: 7.5mm; }
+.side-section h2 {
+  margin: 0 0 4.5mm;
+  font-size: 9pt;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.side-section h2::after {
+  content: '';
+  display: block;
+  width: 26mm;
+  height: 0.3mm;
+  margin: 2.5mm auto 0;
+  background: var(--ink);
+}
+.side-section p { margin-bottom: 1em; }
+.talk, .skill { margin-bottom: 3.5mm; }
+.talk strong, .skill strong {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+}
+.talk span, .skill span { display: block; }
+.side-contact p { margin-bottom: 3mm; }
+
+/* ---------- Colonne principale ---------- */
+main {
+  padding: 14mm 0 10mm 11mm;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.main-section { margin-bottom: 4mm; }
+.main-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin: 0 0 5mm;
+  font-size: 14pt;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  break-after: avoid;
+}
+.main-section h2::after {
+  content: '';
+  flex: 1;
+  height: 0.3mm;
+  background: var(--ink);
+}
+.entry {
+  margin: 0 12mm 5mm 1mm;
+  break-inside: avoid;
+}
+.entry h3 {
+  margin: 0;
+  font-size: 9pt;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.entry .meta {
+  margin: 0.6mm 0 1.8mm;
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+.entry p { margin: 0 0 1mm; text-align: justify; }
+.entry ul { margin: 0; padding: 0; list-style: none; }
+.entry li { position: relative; padding-left: 3.5mm; }
+.entry li::before { content: '–'; position: absolute; left: 0; }
+.entry .stack {
+  margin-top: 1.2mm;
+  font-size: 7pt;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.side-section:last-child p:last-child { margin-bottom: 0; }

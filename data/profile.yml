@@ -1,0 +1,71 @@
+# Identité, contact et textes de présentation.
+# Les champs texte acceptent soit une chaîne, soit un objet par langue : { fr: ..., en: ... }
+#
+# Profil FICTIF fourni en exemple : remplacez tout par vos propres informations.
+
+name: Camille Martin
+# photo: assets/photo.jpg   # optionnel : décommentez après avoir ajouté votre photo
+
+contact:
+  email: camille.martin@example.com
+  phone: "+33 (0)6 00 00 00 00"
+  website: camille-martin.example.com
+  city: Lyon, France
+  links:
+    - label: GitHub
+      url: https://github.com/ # TODO: URL du profil GitHub
+    - label: LinkedIn
+      url: https://www.linkedin.com/ # TODO: URL du profil LinkedIn
+
+# Titres affichés sous le nom. Une variante choisit un jeu de titres par sa clé.
+headlines:
+  default:
+    fr: [Développeuse full-stack, Formatrice]
+    en: [Full-stack developer, Trainer]
+  lead:
+    fr: [Lead développeuse, Architecture web, Mentorat]
+    en: [Lead developer, Web architecture, Mentoring]
+  teaching:
+    fr: [Formatrice, Développement web, Pédagogie par projet]
+    en: [Trainer, Web development, Project-based learning]
+
+# Bios. Une variante choisit une bio par sa clé, sinon le premier angle qui en a une, sinon "default".
+bios:
+  default:
+    fr: |
+      Développeuse full-stack depuis 2016, je conçois des applications web métier, de la base de données à l'interface.
+
+      J'aime les outils simples qui font gagner du temps, et transmettre ce que j'apprends : j'anime des formations au développement web depuis 2020.
+    en: |
+      Full-stack developer since 2016, I build business web applications, from the database to the interface.
+
+      I like simple tools that save time, and passing on what I learn: I have been running web development training courses since 2020.
+  lead:
+    fr: |
+      Lead développeuse d'une équipe de cinq personnes, je fais les choix d'architecture, je relis le code et j'accompagne la montée en compétence des profils juniors.
+
+      Avant cela, quatre ans en agence m'ont appris à livrer vite et proprement pour des clients très différents.
+    en: |
+      Lead developer of a five-person team, I make architecture decisions, review code and help junior developers grow.
+
+      Before that, four years in an agency taught me to ship quickly and cleanly for very different clients.
+  teaching:
+    fr: |
+      Formatrice depuis 2020, j'enseigne le développement web à des adultes en reconversion, en présentiel et à distance.
+
+      Développeuse en activité, j'appuie chaque notion sur des cas réels : les apprenants construisent un projet complet, du premier commit à la mise en ligne.
+    en: |
+      A trainer since 2020, I teach web development to adults changing careers, on-site and remotely.
+
+      As a working developer, I ground every concept in real cases: learners build a complete project, from the first commit to deployment.
+
+languages:
+  - name: { fr: Français, en: French }
+    level: { fr: Langue maternelle, en: Native }
+  - name: { fr: Anglais, en: English }
+    level: { fr: Courant (C1), en: Fluent (C1) }
+
+interests:
+  - { fr: Escalade, en: Climbing }
+  - { fr: Photographie, en: Photography }
+  - { fr: Logiciel libre, en: Open source }

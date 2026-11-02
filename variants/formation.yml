@@ -1,0 +1,24 @@
+# CV orienté formation / enseignement, thème sidebar (colonne latérale).
+title: Formatrice
+lang: fr
+theme: sidebar
+output: CV-Camille-Martin-Formation
+
+angles: [teaching]
+
+# Le thème sidebar place bio/talks/contact à gauche, le reste à droite.
+sections: [bio, talks, contact, experiences, skills, education]
+
+experiences:
+  ids: [ecole-code, atelier-numerique, freelance]
+  max_highlights: 2
+skills:
+  ids: [pedagogy, backend]
+talks:
+  ids: [podcast-reconversion, meetup-php]
+education:
+  ids: [titre-formateur, master-info]
+
+show:
+  stack: false
+  months: true
